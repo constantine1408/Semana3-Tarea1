@@ -1,0 +1,521 @@
+/* ==========================================================================
+   CRUD de clientes (ASP.NET Core + JavaScript) — hoja de estilos
+   ========================================================================== */
+
+:root {
+    color-scheme: light dark;
+
+    --bg: #eef2f0;
+    --surface: #ffffff;
+    --surface-alt: #f5f8f7;
+    --ink: #18262b;
+    --muted: #5d6e73;
+    --line: #dbe3e1;
+    --primary: #0f6b63;
+    --primary-strong: #0a504a;
+    --primary-soft: #e3f2ef;
+    --on-primary: #ffffff;
+    --danger: #b3261e;
+    --danger-strong: #8f1d17;
+    --danger-soft: #fdeceb;
+    --ok: #14663f;
+    --ok-soft: #e6f5ec;
+    --focus: #1d9a8e;
+    --shadow: 0 1px 2px rgba(24, 38, 43, 0.06), 0 12px 32px -12px rgba(24, 38, 43, 0.18);
+
+    --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", sans-serif;
+    --radius: 12px;
+    --radius-sm: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #101a1c;
+        --surface: #172427;
+        --surface-alt: #1c2c30;
+        --ink: #e6efee;
+        --muted: #93a7aa;
+        --line: #2a3b3e;
+        --primary: #3bb7a8;
+        --primary-strong: #5fd0c2;
+        --primary-soft: #1a3a3a;
+        --on-primary: #08201e;
+        --danger: #ff8a80;
+        --danger-strong: #ffa8a0;
+        --danger-soft: #3a1f1e;
+        --ok: #7fd8a6;
+        --ok-soft: #17332a;
+        --focus: #5fd0c2;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* ---------------------------------------------------------------- base */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: clamp(1rem, 4vw, 3rem) 1rem;
+    font-family: var(--font);
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2 {
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    font-size: 1.3rem;
+    font-weight: 650;
+}
+
+:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.visualmente-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------- panel */
+
+.panel {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: clamp(1.25rem, 3.5vw, 2.5rem);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--primary);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.logo {
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+}
+
+.cabecera__titulo {
+    flex: 1 1 240px;
+}
+
+.subtitulo {
+    margin: 0.35rem 0 0;
+    color: var(--muted);
+}
+
+/* ------------------------------------------------------------- botones */
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 1.25rem;
+    font: inherit;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s, transform 0.05s;
+}
+
+.boton:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.boton:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+.boton--primario {
+    color: var(--on-primary);
+    background: var(--primary);
+}
+
+.boton--primario:hover:not(:disabled) {
+    background: var(--primary-strong);
+}
+
+.boton--secundario {
+    color: var(--ink);
+    background: var(--surface);
+    border-color: var(--line);
+}
+
+.boton--secundario:hover:not(:disabled) {
+    border-color: var(--muted);
+    background: var(--surface-alt);
+}
+
+.boton--peligro {
+    color: #fff;
+    background: var(--danger);
+}
+
+.boton--peligro:hover:not(:disabled) {
+    background: var(--danger-strong);
+}
+
+/* ------------------------------------------------------------- avisos */
+
+.aviso {
+    margin: 1.25rem 0 0;
+    padding: 0.8rem 1rem;
+    font-weight: 500;
+    border: 1px solid;
+    border-left-width: 4px;
+    border-radius: var(--radius-sm);
+}
+
+.aviso[hidden] {
+    display: none;
+}
+
+.aviso--ok {
+    color: var(--ok);
+    background: var(--ok-soft);
+    border-color: var(--ok);
+}
+
+.aviso--error {
+    color: var(--danger);
+    background: var(--danger-soft);
+    border-color: var(--danger);
+}
+
+.errores {
+    margin: 1rem 0 0;
+    padding: 0.8rem 1rem 0.8rem 2rem;
+    color: var(--danger);
+    background: var(--danger-soft);
+    border: 1px solid var(--danger);
+    border-left-width: 4px;
+    border-radius: var(--radius-sm);
+}
+
+.errores[hidden] {
+    display: none;
+}
+
+/* ------------------------------------------------------------ búsqueda */
+
+.busqueda {
+    margin-top: 1.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="date"],
+select {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.8rem;
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input::placeholder {
+    color: var(--muted);
+    opacity: 0.8;
+}
+
+input:hover,
+select:hover {
+    border-color: var(--muted);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--focus);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 30%, transparent);
+}
+
+.contador {
+    margin: 0.75rem 0 0.5rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* --------------------------------------------------------------- tabla */
+
+.tabla-contenedor {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.tabla {
+    width: 100%;
+    min-width: 860px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.tabla th,
+.tabla td {
+    padding: 0.7rem 0.85rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.tabla thead th {
+    font-size: 0.85rem;
+    font-weight: 650;
+    color: var(--muted);
+    background: var(--surface-alt);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+}
+
+.tabla tbody td {
+    border-bottom: 1px solid var(--line);
+}
+
+.tabla tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.tabla tbody tr:hover {
+    background: var(--primary-soft);
+}
+
+.numero {
+    font-variant-numeric: tabular-nums;
+}
+
+.vacio {
+    padding: 2rem 1rem !important;
+    text-align: center !important;
+    color: var(--muted);
+}
+
+.insignia {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 999px;
+}
+
+.insignia--activo {
+    color: var(--ok);
+    background: var(--ok-soft);
+}
+
+.insignia--inactivo {
+    color: var(--muted);
+    background: var(--surface-alt);
+    border: 1px solid var(--line);
+}
+
+/* Botones con apariencia de enlace dentro de la tabla */
+.enlace {
+    min-height: 2.25rem;
+    padding: 0 0.7rem;
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.enlace:hover {
+    background: var(--surface);
+    border-color: var(--primary);
+}
+
+.enlace--peligro {
+    color: var(--danger);
+}
+
+.enlace--peligro:hover {
+    background: var(--danger-soft);
+    border-color: var(--danger);
+}
+
+.acciones-fila {
+    white-space: nowrap;
+}
+
+/* El nombre es el acceso al detalle: se ve como texto destacado, no como botón. */
+.enlace--nombre {
+    padding-left: 0;
+    color: var(--ink);
+    text-align: left;
+}
+
+.enlace--nombre:hover {
+    color: var(--primary);
+    text-decoration: underline;
+    background: none;
+    border-color: transparent;
+}
+
+/* ------------------------------------------------------------- diálogos */
+
+dialog {
+    width: min(760px, calc(100% - 2rem));
+    max-height: calc(100dvh - 2rem);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+dialog::backdrop {
+    background: rgba(8, 20, 22, 0.55);
+}
+
+#dlg-eliminar {
+    width: min(460px, calc(100% - 2rem));
+}
+
+#dlg-eliminar p {
+    margin: 0.75rem 0 0;
+}
+
+.rejilla {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.campo--ancho {
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.opcional {
+    font-weight: 400;
+    color: var(--muted);
+}
+
+.check {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+}
+
+.check input {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--primary);
+}
+
+menu.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.65rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+
+/* Detalle: pares etiqueta / valor */
+.detalle {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 1.5rem;
+    margin: 1.25rem 0 0;
+}
+
+.detalle dt {
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.detalle dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------- responsive */
+
+@media (max-width: 640px) {
+    .rejilla {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecera .boton {
+        flex: 1 1 100%;
+    }
+
+    menu.acciones .boton {
+        flex: 1 1 100%;
+    }
+
+    .detalle {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+    }
+
+    .detalle dd {
+        margin-bottom: 0.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

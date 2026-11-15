@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de clientes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="panel">
+    <header class="cabecera">
+        <img class="logo" src="assets/logo-uniandes.png" alt="Universidad UNIANDES Inspira" width="240" height="86">
+        <div class="cabecera__titulo">
+            <h1>Gestión de clientes</h1>
+            <p class="subtitulo">CRUD con ASP.NET Core, JavaScript y MySQL</p>
+        </div>
+        <button type="button" id="btn-nuevo" class="boton boton--primario">Nuevo cliente</button>
+    </header>
+
+    <main>
+        <div id="aviso" class="aviso" role="status" aria-live="polite" hidden></div>
+
+        <form id="form-busqueda" class="busqueda" role="search">
+            <label for="busqueda" class="visualmente-oculto">Buscar clientes</label>
+            <input type="search" id="busqueda" placeholder="Buscar por cédula, nombre, correo o ciudad" maxlength="100" autocomplete="off">
+        </form>
+        <p id="contador" class="contador" aria-live="polite"></p>
+
+        <div class="tabla-contenedor">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th scope="col">Cédula</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Ciudad</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<!-- Crear / editar -->
+<dialog id="dlg-form" aria-labelledby="form-titulo">
+    <form id="form-cliente" novalidate>
+        <h2 id="form-titulo">Nuevo cliente</h2>
+
+        <ul id="form-errores" class="errores" role="alert" hidden></ul>
+
+        <div class="rejilla">
+            <div class="campo">
+                <label for="cedula">Cédula (10 dígitos)</label>
+                <input type="text" id="cedula" name="cedula" inputmode="numeric" maxlength="10" autocomplete="off" required>
+            </div>
+            <div class="campo">
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" name="nombres" maxlength="80" autocomplete="given-name" required>
+            </div>
+            <div class="campo">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" maxlength="80" autocomplete="family-name" required>
+            </div>
+            <div class="campo">
+                <label for="fechaNacimiento">Fecha de nacimiento</label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            </div>
+            <div class="campo">
+                <label for="genero">Género</label>
+                <select id="genero" name="genero" required>
+                    <option value="">Seleccione…</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="O">Otro</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" maxlength="150" autocomplete="email" required>
+            </div>
+            <div class="campo">
+                <label for="telefono">Teléfono</label>
+                <input type="text" id="telefono" name="telefono" inputmode="numeric" maxlength="10" autocomplete="tel" required>
+            </div>
+            <div class="campo">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" id="ciudad" name="ciudad" maxlength="80" required>
+            </div>
+            <div class="campo">
+                <label for="provincia">Provincia</label>
+                <input type="text" id="provincia" name="provincia" maxlength="80" list="lista-provincias" required>
+                <datalist id="lista-provincias"></datalist>
+            </div>
+            <div class="campo campo--ancho">
+                <label for="direccion">Dirección <span class="opcional">(opcional)</span></label>
+                <input type="text" id="direccion" name="direccion" maxlength="200" autocomplete="street-address">
+            </div>
+            <div class="campo campo--ancho campo--check">
+                <label class="check">
+                    <input type="checkbox" id="activo" name="activo" checked>
+                    <span>Cliente activo</span>
+                </label>
+            </div>
+        </div>
+
+        <menu class="acciones">
+            <button type="button" id="btn-cancelar" class="boton boton--secundario">Cancelar</button>
+            <button type="submit" id="btn-guardar" class="boton boton--primario">Guardar</button>
+        </menu>
+    </form>
+</dialog>
+
+<!-- Detalle (lectura de los 13 campos) -->
+<dialog id="dlg-detalle" aria-labelledby="detalle-titulo">
+    <h2 id="detalle-titulo">Detalle del cliente</h2>
+    <dl id="detalle-lista" class="detalle"></dl>
+    <menu class="acciones">
+        <button type="button" id="detalle-cerrar" class="boton boton--secundario">Cerrar</button>
+        <button type="button" id="detalle-editar" class="boton boton--primario">Editar</button>
+    </menu>
+</dialog>
+
+<!-- Confirmar eliminación -->
+<dialog id="dlg-eliminar" aria-labelledby="eliminar-titulo">
+    <h2 id="eliminar-titulo">Eliminar cliente</h2>
+    <p id="eliminar-texto"></p>
+    <menu class="acciones">
+        <button type="button" id="eliminar-cancelar" class="boton boton--secundario">Cancelar</button>
+        <button type="button" id="eliminar-confirmar" class="boton boton--peligro">Eliminar</button>
+    </menu>
+</dialog>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
