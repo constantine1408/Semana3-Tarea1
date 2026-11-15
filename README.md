@@ -98,3 +98,5 @@ Si cambia el puerto de la aplicación, edite `"Urls"` en `appsettings.json`.
 - Validación en el navegador (respuesta inmediata) **y** en el servidor (la que cuenta).
 - El frontend inserta los datos con `textContent`, nunca con `innerHTML` (sin XSS).
 - Los errores inesperados no exponen detalles internos del servidor.
+
+## Pruebas
