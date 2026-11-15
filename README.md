@@ -2,6 +2,8 @@
   <img src="wwwroot/assets/logo-uniandes.png" alt="Universidad UNIANDES Inspira" width="320">
 </p>
 
+# ENUNCIADO DE LA TAREA: Usted debe crear todos los procedimientos necesarios para crear mediante  C# el CRUD de la tabla clientes en un entorno web minimo 10 campos
+
 # CRUD de Clientes — C# (ASP.NET Core) + JavaScript + MySQL
 
 Aplicación web para crear, consultar, actualizar y eliminar clientes. La tabla `clientes` tiene **13 campos** y todas las operaciones sobre la base de datos se hacen mediante **procedimientos almacenados**.
