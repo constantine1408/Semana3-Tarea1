@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "EZueBJkxvDQ=",
+  "success": true,
+  "projectFilePath": "D:\\UNIANDES\\APLICACIONES WED\\TAREA\\Semana3-Tarea1\\ClientesWeb\\ClientesWeb.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ESANCHEZ\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\ESANCHEZ\\.nuget\\packages\\mysqlconnector\\2.3.7\\mysqlconnector.2.3.7.nupkg.sha512",
+    "C:\\Users\\ESANCHEZ\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.34\\microsoft.netcore.app.ref.8.0.34.nupkg.sha512",
+    "C:\\Users\\ESANCHEZ\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.34\\microsoft.windowsdesktop.app.ref.8.0.34.nupkg.sha512",
+    "C:\\Users\\ESANCHEZ\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.34\\microsoft.aspnetcore.app.ref.8.0.34.nupkg.sha512",
+    "C:\\Users\\ESANCHEZ\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.34\\microsoft.netcore.app.host.win-x64.8.0.34.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "El paquete \"MySqlConnector\" 2.3.7 tiene una vulnerabilidad de gravedad moderada conocida, https://github.com/advisories/GHSA-473q-m89c-ghf8",
+      "projectPath": "D:\\UNIANDES\\APLICACIONES WED\\TAREA\\Semana3-Tarea1\\ClientesWeb\\ClientesWeb.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\UNIANDES\\APLICACIONES WED\\TAREA\\Semana3-Tarea1\\ClientesWeb\\ClientesWeb.csproj",
+      "libraryId": "MySqlConnector",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}
