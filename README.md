@@ -100,3 +100,4 @@ Si cambia el puerto de la aplicación, edite `"Urls"` en `appsettings.json`.
 - Los errores inesperados no exponen detalles internos del servidor.
 
 ## Pruebas
+<img width="1920" height="977" alt="image" src="https://github.com/user-attachments/assets/ee9d250e-6d35-4042-9e10-9900f62abb87" />
