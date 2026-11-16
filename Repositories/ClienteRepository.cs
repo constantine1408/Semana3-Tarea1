@@ -24,7 +24,7 @@ public class ClienteRepository : IClienteRepository
                 "Falta la cadena de conexión 'Default' en appsettings.json.");
     }
 
-    // ----------------------------------------------------------------- CREATE
+        /* CREATE*/
     public async Task<int> CrearAsync(Cliente cliente)
     {
         try
@@ -43,7 +43,7 @@ public class ClienteRepository : IClienteRepository
         }
     }
 
-    // ------------------------------------------------------------------- READ
+        /*READ*/
     public async Task<Cliente?> ObtenerAsync(int id)
     {
         await using var conexion = await AbrirAsync();
@@ -72,7 +72,7 @@ public class ClienteRepository : IClienteRepository
         return clientes;
     }
 
-    // ----------------------------------------------------------------- UPDATE
+    /*UPDATE*/
     public async Task ActualizarAsync(Cliente cliente)
     {
         try
@@ -89,7 +89,7 @@ public class ClienteRepository : IClienteRepository
         }
     }
 
-    // ----------------------------------------------------------------- DELETE
+    /* DELETE*/
     public async Task EliminarAsync(int id)
     {
         try
@@ -105,7 +105,7 @@ public class ClienteRepository : IClienteRepository
         }
     }
 
-    // --------------------------------------------------------------- privados
+    /* privados*/
     private async Task<MySqlConnection> AbrirAsync()
     {
         var conexion = new MySqlConnection(_cadenaConexion);

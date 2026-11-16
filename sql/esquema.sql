@@ -1,9 +1,8 @@
+-- Active: 1794794683361@@127.0.0.1@3306@mysql
 -- ============================================================================
 --  CRUD de clientes (ASP.NET Core + JavaScript)  —  MySQL / MariaDB
 --  Tabla de 13 campos y 5 procedimientos almacenados.
---
---  Importar desde phpMyAdmin (pestaña "Importar"), o con:
---      mysql -u root -p < sql/esquema.sql
+--  Importar desde phpMyAdmin (pestaña "Importar"), o con: mysql -u root -p < sql/esquema.sql
 -- ============================================================================
 
 CREATE DATABASE IF NOT EXISTS crud_clientes_web
@@ -20,7 +19,7 @@ CREATE TABLE IF NOT EXISTS clientes (
     nombres          VARCHAR(80)  NOT NULL,
     apellidos        VARCHAR(80)  NOT NULL,
     fecha_nacimiento DATE         NOT NULL,
-    genero           CHAR(1)      NOT NULL,                       -- M, F u O
+    genero           CHAR(1)      NOT NULL,  -- M, F u O (Masculino, Femenino y Otros)
     email            VARCHAR(150) NOT NULL,
     telefono         VARCHAR(10)  NOT NULL,
     direccion        VARCHAR(200) NOT NULL DEFAULT '',
@@ -34,7 +33,6 @@ CREATE TABLE IF NOT EXISTS clientes (
 
 -- ----------------------------------------------------------------------------
 --  Procedimientos almacenados
---
 --  Errores que lanzan (la API en C# los traduce a respuestas HTTP):
 --      SQLSTATE '45000'  → conflicto (cédula repetida)      → HTTP 409
 --      SQLSTATE '45404'  → cliente no encontrado            → HTTP 404

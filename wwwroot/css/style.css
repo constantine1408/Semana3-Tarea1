@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CRUD de clientes (ASP.NET Core + JavaScript) — hoja de estilos
+   CRUD de clientes de la tarea (ASP.NET Core + JavaScript) Estilos CSS
    ========================================================================== */
 
 :root {
@@ -50,7 +50,7 @@
     }
 }
 
-/* ---------------------------------------------------------------- base */
+/*  base */
 
 *,
 *::before,
@@ -101,7 +101,7 @@ h2 {
     white-space: nowrap;
 }
 
-/* --------------------------------------------------------------- panel */
+/*  panel */
 
 .panel {
     max-width: 1140px;
@@ -138,7 +138,7 @@ h2 {
     color: var(--muted);
 }
 
-/* ------------------------------------------------------------- botones */
+/*  botones */
 
 .boton {
     display: inline-flex;
@@ -192,7 +192,7 @@ h2 {
     background: var(--danger-strong);
 }
 
-/* ------------------------------------------------------------- avisos */
+/*  avisos */
 
 .aviso {
     margin: 1.25rem 0 0;
@@ -233,7 +233,7 @@ h2 {
     display: none;
 }
 
-/* ------------------------------------------------------------ búsqueda */
+/*  búsqueda */
 
 .busqueda {
     margin-top: 1.5rem;
@@ -278,7 +278,7 @@ select:focus {
     color: var(--muted);
 }
 
-/* --------------------------------------------------------------- tabla */
+/* tabla */
 
 .tabla-contenedor {
     overflow-x: auto;
@@ -397,7 +397,7 @@ select:focus {
     border-color: transparent;
 }
 
-/* ------------------------------------------------------------- diálogos */
+/* diálogos */
 
 dialog {
     width: min(760px, calc(100% - 2rem));
@@ -471,7 +471,7 @@ menu.acciones {
     padding: 0;
 }
 
-/* Detalle: pares etiqueta / valor */
+/* Detalle: pares etiqueta / valor- */
 .detalle {
     display: grid;
     grid-template-columns: max-content 1fr;
@@ -489,7 +489,7 @@ menu.acciones {
     overflow-wrap: anywhere;
 }
 
-/* ---------------------------------------------------------- responsive */
+/*  responsive */
 
 @media (max-width: 640px) {
     .rejilla {

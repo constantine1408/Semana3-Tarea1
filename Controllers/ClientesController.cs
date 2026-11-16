@@ -92,7 +92,7 @@ public class ClientesController : ControllerBase
         }
     }
 
-    // ---------------------------------------------------------------- ayudas
+    /*ayudas*/
     private ObjectResult NoEncontrado() =>
         NotFound(new ProblemDetails
         {
